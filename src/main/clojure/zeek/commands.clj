@@ -1,8 +1,7 @@
 (ns zeek.commands
-  (require [zeek.ops :as ops]
-           [zeek.client :refer [client]]))
+  (require [zeek.ops :as ops]))
 
-(defn zkget [pwd [path]]
+(defn zkget [{:keys [client pwd]} [path]]
   (let [full-path (cond
                    (nil? path) pwd
                    (.startsWith path "/") path
@@ -10,9 +9,9 @@
                    (= path ".") pwd
                    (.startsWith path ".") (do (println "TODO") pwd)
                    true path)]
-    (println (ops/get-data @client full-path))))
+    (println (ops/get-data client full-path))))
 
-(defn cd [pwd [path]]
+(defn cd [{:keys [pwd]} [path]]
   (cond
    (nil? path) "/"
    (.startsWith path "/") path

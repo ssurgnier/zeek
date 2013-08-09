@@ -13,7 +13,7 @@
        (reset! client (new-client env-config))
        (.start @client)
        (try
-         (loop [state {:pwd "/"}]
+         (loop [state {:client @client :pwd "/"}]
            (prompt state)
            (->> (read-line) (eval-input state) (recur)))
          (finally (.close @client))))))
