@@ -15,6 +15,7 @@
        (try
          (loop [state {:client @client :pwd "/"}]
            (prompt state)
+           (flush)
            (->> (read-line) (eval-input state) (recur)))
          (finally (.close @client))))))
 
