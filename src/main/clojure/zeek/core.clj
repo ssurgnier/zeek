@@ -1,7 +1,7 @@
 (ns zeek.core
   "Configuration file must eval to a map of the form:
-  {:env1 {:zookeeper "a-zk-connect-string"}
-   :env2 {:zookeeper "another-zk-connect-string"}
+  {:env1 {:zookeeper ^String a-zk-connect-string}
+   :env2 {:zookeeper ^String another-zk-connect-string}
    :default :env1}"
   (:require [zeek.config :refer [load-config]]
             [zeek.client :refer [client new-client]]
