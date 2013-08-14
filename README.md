@@ -1,4 +1,14 @@
 # zeek
+A simple zookeeper cli.
+
+## Usage
+```
+lein run <path/to/config> <env>
+/ $ ls
+(znode1 znode2 znode3)
+/ $ cd znode1
+/znode1 $
+```
 
 ## License
 
