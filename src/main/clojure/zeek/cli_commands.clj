@@ -1,7 +1,8 @@
 (ns zeek.cli-commands
   (:require [zeek.zk-ops :as ops]
             [clojure.string :as str :refer [split join]])
-  (:import org.apache.zookeeper.KeeperException$NotEmptyException))
+  (:import org.apache.zookeeper.KeeperException$NotEmptyException
+           org.apache.zookeeper.KeeperException$NoNodeException))
 
 (defn- if-exists-then-cd
   [{:keys [client pwd path]}]
@@ -52,7 +53,9 @@
 (defn ls "Return a list of children at a znode"
   [{:keys [client pwd]} [path]]
   (let [full-path (get-full-path pwd path)]
-    (sort (into [] (ops/get-children client full-path)))))
+    (try (sort (into [] (ops/get-children client full-path)))
+         (catch KeeperException$NoNodeException e
+           (str "No such node")))))
 
 (defn rm "Remove a znode"
   [{:keys [client pwd]} [path]]
