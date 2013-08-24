@@ -1,6 +1,7 @@
 (ns zeek.cli-commands
   (:require [zeek.zk-ops :as ops]
-            [clojure.string :as str :refer [split join]]))
+            [clojure.string :as str :refer [split join]])
+  (:import org.apache.zookeeper.KeeperException$NotEmptyException))
 
 (defn- if-exists-then-cd
   [{:keys [client pwd path]}]
@@ -56,5 +57,9 @@
 (defn rm "Remove a znode"
   [{:keys [client pwd]} [path]]
   (let [full-path (get-full-path pwd path)]
-    (if (= full-path "/") (do (println "Operation not permitted") nil)
-        (ops/delete client full-path))))
+    (if (= full-path "/")
+      "Action not permitted: ZooKeeper root"
+      (try (do (ops/delete client full-path)
+               (str "Removed " full-path))
+           (catch KeeperException$NotEmptyException e
+             "Action not permitted: Directory not empty")))))
