@@ -8,5 +8,5 @@
   (ExponentialBackoffRetry. 1000 3))
 
 (defn new-client
-  [{:keys [zookeeper]}]
+  [zookeeper]
   (CuratorFrameworkFactory/newClient zookeeper retry-policy))
