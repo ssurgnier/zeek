@@ -2,19 +2,24 @@
 
 A simple zookeeper cli.
 
+## Create a configuration file
+```
+mkdir -p resources && echo {:local \"localhost:2181\"} > resources/config.clj
+```
+
 ## Usage
 ```
-lein run path/to/config.clj prod
+lein run resources/config.clj local
 
-localhost@prod:/ $ ls
+hostname@local:/ $ ls
 (znode1 znode2 znode3)
-localhost@prod:/ $ cd znode1
-localhost@prod:/znode1 $ get
+hostname@local:/ $ cd znode1
+localhost@local:/znode1 $ get
 #<byte[] [B@727f3b8a>
-localhost@prod:/znode1 $ cd ..
-localhost@prod:/ $ rm znode1
+hostname@local:/znode1 $ cd ..
+localhost@local:/ $ rm znode1
 Removed /znode1
-localhost@prod:/ $
+hostname@local:/ $
 ```
 
 ## License
