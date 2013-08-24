@@ -4,11 +4,11 @@ A simple zookeeper cli.
 
 ## Usage
 ```
-lein run <path/to/config> <env>
-/ $ ls
+lein run path/to/config.clj prod
+localhost@prod:/ $ ls
 (znode1 znode2 znode3)
-/ $ cd znode1
-/znode1 $
+localhost@prod:/ $ cd znode1
+localhost@prod:/znode1 $
 ```
 
 ## License
