@@ -21,6 +21,6 @@
       (do (println "unknown command") state))))
 
 (defn prompt
-  "TOOD <username>@<zookeeper-host>:pwd $"
+  "TODO <username>@<zookeeper-host>:pwd $"
   [{:keys [pwd]}]
   (print (str pwd " $ ")))
