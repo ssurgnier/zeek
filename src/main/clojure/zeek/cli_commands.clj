@@ -56,5 +56,5 @@
 (defn rm "Remove a znode"
   [{:keys [client pwd]} [path]]
   (let [full-path (get-full-path pwd path)]
-    (if (.startsWith full-path "/") (do (println "Operation not permitted") nil)
+    (if (= full-path "/") (do (println "Operation not permitted") nil)
         (ops/delete client full-path))))
