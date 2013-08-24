@@ -8,8 +8,7 @@
   [{:keys [client pwd path]}]
   (if (ops/check-exists client path)
     path
-    (do (println "No such file or directory")
-        pwd)))
+    (do (println "No such node") pwd)))
 
 (defn- dotdot [pwd path]
   (let [new-pwd (->> (split pwd #"/")
