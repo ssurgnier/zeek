@@ -1,6 +1,6 @@
 (ns zeek.cli-commands
-  (require [zeek.zk-ops :as ops]
-           [clojure.string :as str :refer [split join]]))
+  (:require [zeek.zk-ops :as ops]
+            [clojure.string :as str :refer [split join]]))
 
 (defn- if-exists-then-cd
   [{:keys [client pwd path]}]

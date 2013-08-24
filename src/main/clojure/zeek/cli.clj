@@ -1,5 +1,5 @@
 (ns zeek.cli
-  (require [zeek.cli-commands :as cmd]))
+  (:require [zeek.cli-commands :as cmd]))
 
 (defn split-input
   [input]

@@ -7,7 +7,7 @@
             [zeek.client :refer [client new-client]]
             [zeek.cli :refer [eval-input prompt]]
             [clojure.string :refer [split]])
-  (import java.net.InetAddress)
+  (:import java.net.InetAddress)
   (:gen-class))
 
 (defn run
